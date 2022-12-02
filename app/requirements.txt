@@ -1,0 +1,5 @@
+numpy
+pandas
+gspread
+Levenshtein
+gspread_dataframe
