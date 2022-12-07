@@ -9,10 +9,17 @@
  - 
 
 資料(A)
-![画像2](https://user-images.githubusercontent.com/55615907/206202859-fb413042-44a4-4582-8f3d-b7add3b3c450.png)
+
+![画像2](https://user-images.githubusercontent.com/55615907/206204264-b1f88e25-0fe1-4333-96ff-46f9f17d5454.png)
+
 資料(B)
-![画像3](https://user-images.githubusercontent.com/55615907/206202867-b0c5d978-3126-42b8-a2d0-16569a45785c.png)
+
+![画像3](https://user-images.githubusercontent.com/55615907/206204273-26d9bca0-89a5-4116-977a-bcc5a05890a9.png)
+
 資料(C)
-![画像4](https://user-images.githubusercontent.com/55615907/206202868-d2f4c955-3476-4e94-9456-9cecca5447b9.png)
+
+![画像4](https://user-images.githubusercontent.com/55615907/206204275-19dba4ca-a593-46ea-901c-69571c4038cb.png)
+
 資料(C')
-![画像5](https://user-images.githubusercontent.com/55615907/206203623-d88f73bd-d122-4723-aa8d-734a77e07cb4.png)
+
+![画像5](https://user-images.githubusercontent.com/55615907/206204278-d6a6eed5-4533-4009-9a08-2bddc904b520.png)
