@@ -1,7 +1,14 @@
 
 """
-import 
+https://docs.gspread.org/en/v5.7.0/
+
+client: googledrive APIのclient
+
+fn_mem : メンバーシップリスト
+fn_rep : 進捗報告のまとめファイル(書き換える対象のファイル)
+fn_reps: 進捗報告のアンケートファイル
 """
+
 import os
 import sys
 import collections
@@ -26,17 +33,81 @@ argLDistsv  = lambda s, v : np.argmin(LDistsv(s, v))
 argLDistsv2 = lambda s, v : np.argmin(LDistsv2(s, v))
 
 
+"""
+summary_progressreports
+進捗報告の内容から集計を行う。
+"""
+def summary_progressreports(client, fn_mem, fn_rep):
+    # open sheets
+    f_mem, f_rep = map(client.open, [fn_mem, fn_rep])
+
+    # 所属	メール	氏名	発表日	その他発表日
+    mem_attr, mem_mail, mem_name, mem_date1, mem_date2 = map(
+        lambda x: [s.split(", ") for s in f_mem.sheet1.col_values(x)], 
+        range(1, 5+1)
+    )
+    rep_title = list(map(lambda x: x.title, f_rep.worksheets()))
+
+    ws_name = "Summary(BETA)"
+
+    if ws_name in rep_title:
+        print("delete \"{0}\"".format(ws_name))
+        f_rep.del_worksheet(f_rep.worksheet(ws_name))
+    
+    f_rep.add_worksheet(title=ws_name, rows=100, cols=20)
+
+    fmatch = list(map(lambda s : re.fullmatch(r'\d+/\d+/\d+', s), rep_title))
+
+    rep_title2 = [rep_title[i] for i,fm in enumerate(fmatch) if fm != None]
+    ws_list2 = list(map(f_rep.worksheet, rep_title2))
+
+    ws_list2_colvals = [s.col_values(3) for s in ws_list2]
+
+    N = len(mem_name)
+
+    headline = ["所属", "辞書登録名"] + rep_title2 + ["出席数", "欠席数", "不明数"]
+    lines = [headline]
+    for n in range(1, N):
+        line = []
+        line = line + [mem_attr[n][0], mem_name[n][0]]
+        #
+        # attendee = [s.col_values(3)[0] for s in ws_list2]
+        attendee = [s[n] for s in ws_list2_colvals]
+        #
+        line = line + attendee
+        #
+        attendee = np.array(attendee)
+        #
+        k_attend  = sum(attendee == "出席できる(can attend)")
+        k_absent  = sum(attendee == "出席できない(can't attend)")
+        k_unknown = len(rep_title2) - (k_attend + k_absent)
+        #
+        line = line + list(map(str, [k_attend, k_absent, k_unknown]))
+        #
+        lines = lines + [line]
+    df_lines = pd.DataFrame(lines)
+
+    set_with_dataframe(
+        f_rep.worksheet(ws_name), 
+        df_lines, 
+        include_column_header=False
+    )
+
+    return
 
 
 
 """
-
+collect_progressreports
+進捗報告のデータを共有用のファイルに変換する。
 """
 def collect_progressreports(client, fn_mem, fn_rep, fn_reps, rep_insertWS):
     # open sheets
-    f_mem  = client.open(fn_mem )
-    f_rep  = client.open(fn_rep )
+    # inputs # 
+    f_mem  = client.open(fn_mem) # membership list
     f_reps = [client.open(f) for f in fn_reps]
+    # outputs #
+    f_rep  = client.open(fn_rep) # output
     
     col_course, col_name = 1, 3 
     
@@ -129,6 +200,8 @@ def collect_progressreports(client, fn_mem, fn_rep, fn_reps, rep_insertWS):
             df_lines, 
             include_column_header=False
         )
+
+        return
 
 
 
