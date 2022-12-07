@@ -32,6 +32,11 @@
 ![画像5](https://user-images.githubusercontent.com/55615907/206204278-d6a6eed5-4533-4009-9a08-2bddc904b520.png)
 
 
+## 今後の展望
+
+可読性を上げていきたい。
+拡張性を上げてGUIを導入するのもありかと思う。
+
 ## 参考資料
 
 [1] https://www.twilio.com/blog/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python-jp
