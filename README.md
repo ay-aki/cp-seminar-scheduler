@@ -35,9 +35,13 @@
 ## 参考資料
 
 [1] https://www.twilio.com/blog/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python-jp
+
 [2] https://programmer-life.work/python/gspread-write-spreadsheet#1
+
 [3] https://docs.gspread.org/en/latest/user-guide.html#selecting-a-worksheet
-[4] https://docs.gspread.org/en/v5.6.1/
+
+[4] https://docs.gspread.org/en/v5.6.1/, 
     https://docs.gspread.org/en/v5.7.0/
+    
 [5] https://github.com/burnash/gspread/
 
