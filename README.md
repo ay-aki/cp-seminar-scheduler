@@ -1,5 +1,12 @@
 # cp-seminar-scheduler
 
+## 使用技術
+
+以下の技術を使用
+
+ - Python
+ - numpy, pandas, gspread, Levenshtein, gspread_dataframe
+
 ## 何を目的として作ったか？
 
 ゼミのスケジュール管理のために作成したものです。
@@ -23,3 +30,14 @@
 資料(C')
 
 ![画像5](https://user-images.githubusercontent.com/55615907/206204278-d6a6eed5-4533-4009-9a08-2bddc904b520.png)
+
+
+## 参考資料
+
+[1] https://www.twilio.com/blog/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python-jp
+[2] https://programmer-life.work/python/gspread-write-spreadsheet#1
+[3] https://docs.gspread.org/en/latest/user-guide.html#selecting-a-worksheet
+[4] https://docs.gspread.org/en/v5.6.1/
+    https://docs.gspread.org/en/v5.7.0/
+[5] https://github.com/burnash/gspread/
+
